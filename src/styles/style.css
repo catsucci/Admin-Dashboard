@@ -1,1 +1,89 @@
 @import url("./css-resets/reset.css");
+
+:root {
+  --primary: hsl(229, 19%, 23%);
+  --primary-content: hsl(230, 18%, 73%);
+  --primary-dark: hsl(226, 19%, 13%);
+  --primary-light: hsl(230, 18%, 33%);
+
+  --secondary: hsl(259, 19%, 23%);
+  --secondary-content: hsl(259, 18%, 73%);
+  --secondary-dark: hsl(258, 19%, 13%);
+  --secondary-light: hsl(259, 18%, 33%);
+
+  --background: hsl(0, 0%, 10%);
+  --foreground: hsl(0, 0%, 15%);
+  --border: hsl(0, 0%, 25%);
+
+  --copy: hsl(0, 0%, 98%);
+  --copy-light: hsl(0, 0%, 85%);
+  --copy-lighter: hsl(0, 0%, 65%);
+
+  --success: hsl(120, 19%, 23%);
+  --warning: hsl(60, 19%, 23%);
+  --error: hsl(0, 19%, 23%);
+  --success-content: hsl(120, 18%, 73%);
+  --warning-content: hsl(60, 18%, 73%);
+  --error-content: hsl(0, 18%, 73%);
+}
+
+body {
+  height: 100vh;
+  grid-template-areas: 
+    "sidebar header"
+    "sidebar main-content"
+    ;
+  grid-template-columns: 17rem;
+  grid-template-rows: 10rem;
+}
+
+.grid-container {
+  display: grid;
+  place-content: stretch;
+}
+
+.header-container {
+  background-color: var(--primary-content);
+  grid-area: header;
+}
+
+.sidebar-container {
+  background-color: var(--primary);
+  color: var(--primary-content);
+  grid-area: sidebar;
+  padding: 1.5rem 0 0 1.5rem;
+}
+
+.main-content-container {
+  background-color: var(--success);
+  grid-area: main-content;
+}
+
+.icon {
+  width: 1rem;
+  fill: var(--primary-content);
+}
+
+.sidebar-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebar-container br {
+  margin-bottom: 1.5rem;
+}
+
+.logo-container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+#view-dashboard-icon {
+  width: 3rem;
+}
+
+.logo-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
