@@ -43,8 +43,12 @@ body {
 }
 
 .header-container {
-  background-color: var(--primary-content);
+  background-color: var(--background);
+  color: var(--copy);
   grid-area: header;
+  display: grid;
+  grid-template-rows: 40% 1fr;
+  padding: 0rem 3.5rem 1rem 2.5rem;
 }
 
 .sidebar-container {
@@ -104,3 +108,61 @@ body {
   font-weight: bold;
 }
 
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-top .icon {
+  fill: var(--copy);
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  flex-basis: 75%;
+}
+
+label[for="search-bar"] {
+  display: flex;
+  align-items: center;
+}
+
+#search-bar {
+  background-color: inherit;
+  color: inherit;
+  caret-color: var(--copy);
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+.notifications-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.pfp {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-info > img.pfp {
+  width: 4rem;
+  height: 4rem;
+}
