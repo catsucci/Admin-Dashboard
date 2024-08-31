@@ -29,6 +29,7 @@
 
 body {
   height: 100vh;
+  display: grid;
   grid-template-areas: 
     "sidebar header"
     "sidebar main-content"
@@ -43,7 +44,7 @@ body {
 }
 
 .header-container {
-  background-color: var(--background);
+  background-color: var(--foreground);
   color: var(--copy);
   grid-area: header;
   display: grid;
@@ -59,8 +60,14 @@ body {
 }
 
 .main-content-container {
-  background-color: var(--success);
+  background-color: var(--background);
   grid-area: main-content;
+  display: grid;
+  grid-template-areas: 
+    "cards-container aside"
+    ;
+  grid-template-columns: 1fr 20rem;
+  /*grid-template-rows: 10rem;*/
 }
 
 .icon {
@@ -143,6 +150,7 @@ label[for="search-bar"] {
   gap: 1.5rem;
 }
 
+.trend-icon,
 .pfp {
   width: 2.5rem;
   height: 2.5rem;
@@ -166,3 +174,37 @@ label[for="search-bar"] {
   width: 4rem;
   height: 4rem;
 }
+
+.cards-container {
+  background: var(--background);
+  display: grid;
+  grid-template-rows: 3.5rem 1fr;
+}
+
+.cards-container > .cards-title {
+  color: var(--copy);
+  font-size: 2rem;
+}
+
+.cards-container > .cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.cards > .card {
+  color: var(--copy);
+  background-color: var(--foreground);
+  height: 10rem;
+}
+
+aside {
+  background-color: green;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.announcments-container {
+  background-color: red;
+}
+
