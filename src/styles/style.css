@@ -30,10 +30,9 @@
 body {
   height: 100vh;
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "sidebar header"
-    "sidebar main-content"
-    ;
+    "sidebar main-content";
   grid-template-columns: 17rem;
   grid-template-rows: 10rem;
 }
@@ -63,9 +62,7 @@ body {
   background-color: var(--background);
   grid-area: main-content;
   display: grid;
-  grid-template-areas: 
-    "cards-container aside"
-    ;
+  grid-template-areas: "cards-container aside";
   grid-template-columns: 1fr 20rem;
   /*grid-template-rows: 10rem;*/
 }
@@ -129,6 +126,7 @@ body {
   display: flex;
   align-items: center;
   flex-basis: 75%;
+  gap: 0.5rem;
 }
 
 label[for="search-bar"] {
@@ -147,7 +145,7 @@ label[for="search-bar"] {
 .notifications-container {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0.7rem;
 }
 
 .trend-icon,
@@ -178,33 +176,113 @@ label[for="search-bar"] {
 .cards-container {
   background: var(--background);
   display: grid;
-  grid-template-rows: 3.5rem 1fr;
+  grid-template-rows: 3rem 1fr;
+  padding: 0 1rem 0 2rem;
 }
 
 .cards-container > .cards-title {
   color: var(--copy);
-  font-size: 2rem;
+  font-weight: 700;
+  display: grid;
+  align-items: center;
 }
 
 .cards-container > .cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
 .cards > .card {
   color: var(--copy);
   background-color: var(--foreground);
-  height: 10rem;
+  padding: 1rem 1rem 2rem 2rem;
+  position: relative;
+  border: 1px solid white;
+}
+
+.card > h3 {
+  font-weight: 700;
+}
+
+.card-content {
+  font-size: 0.9rem;
+  height: 5rem;
+  margin-bottom: 2rem;
+}
+
+.card-buttons {
+  /*align-self: flex-end;*/
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 0.5rem;
 }
 
 aside {
-  background-color: green;
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  color: var(--copy);
 }
 
 .announcments-container {
-  background-color: red;
+  padding: 0 1rem 0;
 }
 
+.announcments-container > h2,
+.trending-container > h2 {
+  font-weight: 700;
+  height: 3rem;
+  display: grid;
+  align-items: center;
+}
+
+.announcments {
+  background-color: var(--foreground);
+  display: grid;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid white;
+}
+
+.announcment > h3 {
+  font-weight: 700;
+}
+
+.announcment > p {
+  font-size: 0.8rem;
+}
+
+.trending-container {
+  padding: 0 1rem 0;
+}
+
+.trends {
+  background-color: var(--foreground);
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid white;
+}
+
+.trend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.trend-text > h4 {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.trend-text > p {
+  font-size: 0.8rem;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
