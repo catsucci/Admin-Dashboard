@@ -1,40 +1,23 @@
 @import url("./css-resets/reset.css");
 
 :root {
-  --primary: hsl(229, 19%, 23%);
-  --primary-content: hsl(230, 18%, 73%);
-  --primary-dark: hsl(226, 19%, 13%);
-  --primary-light: hsl(230, 18%, 33%);
-
-  --secondary: hsl(259, 19%, 23%);
-  --secondary-content: hsl(259, 18%, 73%);
-  --secondary-dark: hsl(258, 19%, 13%);
-  --secondary-light: hsl(259, 18%, 33%);
-
-  --background: hsl(0, 0%, 10%);
-  --foreground: hsl(0, 0%, 15%);
-  --border: hsl(0, 0%, 25%);
-
-  --copy: hsl(0, 0%, 98%);
-  --copy-light: hsl(0, 0%, 85%);
-  --copy-lighter: hsl(0, 0%, 65%);
-
-  --success: hsl(120, 19%, 23%);
-  --warning: hsl(60, 19%, 23%);
-  --error: hsl(0, 19%, 23%);
-  --success-content: hsl(120, 18%, 73%);
-  --warning-content: hsl(60, 18%, 73%);
-  --error-content: hsl(0, 18%, 73%);
+  --primary: hsla(10, 100%, 59%, 1);
+  --background: hsla(0, 0%, 95%, 1);
+  --foreground: hsla(0, 0%, 91%, 1);
+  --border: hsla(15, 10%, 76%, 1);
+  --copy: hsla(0, 0%, 0%, 1);
+  --copy-light: hsla(60, 1%, 63%, 1);
 }
 
 body {
+  background-color: var(--background);
   height: 100vh;
   display: grid;
   grid-template-areas:
     "sidebar header"
     "sidebar main-content";
-  grid-template-columns: 17rem;
-  grid-template-rows: 10rem;
+  grid-template-columns: 14rem;
+  grid-template-rows: 8rem;
 }
 
 .grid-container {
@@ -43,23 +26,19 @@ body {
 }
 
 .header-container {
-  background-color: var(--foreground);
   color: var(--copy);
   grid-area: header;
   display: grid;
   grid-template-rows: 40% 1fr;
-  padding: 0rem 3.5rem 1rem 2.5rem;
+  padding: 0rem 3.5rem 0 2.5rem;
 }
 
 .sidebar-container {
-  background-color: var(--primary);
-  color: var(--primary-content);
   grid-area: sidebar;
   padding: 1.5rem 0 0 1.5rem;
 }
 
 .main-content-container {
-  background-color: var(--background);
   grid-area: main-content;
   display: grid;
   grid-template-areas: "cards-container aside";
@@ -87,16 +66,22 @@ body {
 
 #view-dashboard-icon {
   width: 3rem;
+  fill: var(--primary);
+  &:hover {
+    cursor: auto;
+  }
 }
 
-.logo-title {
+#logo-title {
   font-size: 2rem;
   font-weight: bold;
+  color: var(--primary);
 }
 
 .sidebar-container ul {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /*display: flex;*/
+  /*flex-direction: column;*/
   gap: 1rem;
 }
 
@@ -110,6 +95,14 @@ body {
   align-items: center;
   font-size: 1.2rem;
   font-weight: bold;
+  &:hover {
+    color: var(--primary);
+    fill: var(--primary);
+  }
+}
+
+.sidebar-container .icon:hover {
+  fill: var(--primary);
 }
 
 .header-top {
@@ -118,14 +111,14 @@ body {
   align-items: center;
 }
 
-.header-top .icon {
-  fill: var(--copy);
-}
+/*.header-top .icon {*/
+/*  fill: var(--copy);*/
+/*}*/
 
 .search-bar-container {
   display: flex;
   align-items: center;
-  flex-basis: 75%;
+  flex-basis: 77.5%;
   gap: 0.5rem;
 }
 
@@ -135,11 +128,23 @@ label[for="search-bar"] {
 }
 
 #search-bar {
-  background-color: inherit;
+  border: 0;
+  background-color: var(--background);
   color: inherit;
   caret-color: var(--copy);
-  border-radius: 4px;
+  border-radius: 3px 3px 1rem 3px;
   flex-grow: 1;
+  padding-left: 1ch;
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  border: 1px solid var(--copy);
+  border-left: 3px solid var(--copy);
+  &:focus {
+    /*outline: solid 1px var(--success);*/
+    outline: none;
+    border-left: 3px solid var(--primary);
+  }
 }
 
 .notifications-container {
@@ -152,6 +157,7 @@ label[for="search-bar"] {
 .pfp {
   width: 2.5rem;
   height: 2.5rem;
+  border: 1px solid var(--primary);
   border-radius: 50%;
   object-fit: cover;
 }
@@ -160,6 +166,11 @@ label[for="search-bar"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.profile-buttons-container {
+  display: flex;
+  gap: 1rem;
 }
 
 .profile-info {
@@ -171,17 +182,16 @@ label[for="search-bar"] {
 .profile-info > img.pfp {
   width: 4rem;
   height: 4rem;
+  border: 1px solid var(--primary);
 }
 
 .cards-container {
-  background: var(--background);
   display: grid;
   grid-template-rows: 3rem 1fr;
   padding: 0 1rem 0 2rem;
 }
 
 .cards-container > .cards-title {
-  color: var(--copy);
   font-weight: 700;
   display: grid;
   align-items: center;
@@ -194,11 +204,11 @@ label[for="search-bar"] {
 }
 
 .cards > .card {
-  color: var(--copy);
-  background-color: var(--foreground);
   padding: 1rem 1rem 2rem 2rem;
   position: relative;
-  border: 1px solid white;
+  border: 2px solid var(--copy);
+  border-left: 4px solid var(--primary);
+  border-radius: 3px 3px 1rem 3px;
 }
 
 .card > h3 {
@@ -220,11 +230,13 @@ label[for="search-bar"] {
   bottom: 0.5rem;
 }
 
+.card-buttons > svg:hover {
+  fill: var(--primary);
+}
+
 aside {
-  background-color: var(--background);
   display: flex;
   flex-direction: column;
-  color: var(--copy);
 }
 
 .announcments-container {
@@ -240,12 +252,14 @@ aside {
 }
 
 .announcments {
-  background-color: var(--foreground);
+  background-color: var(--background);
   display: grid;
   align-items: stretch;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1rem;
-  border: 1px solid white;
+  /*padding-bottom: 0;*/
+  border-left: 3px solid var(--primary);
+  border-radius: 3px 3px 1rem 3px;
 }
 
 .announcment > h3 {
@@ -261,11 +275,12 @@ aside {
 }
 
 .trends {
-  background-color: var(--foreground);
+  background-color: var(--background);
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1rem;
-  border: 1px solid white;
+  border-left: 3px solid var(--primary);
+  border-radius: 3px 3px 1rem 3px;
 }
 
 .trend {
@@ -285,4 +300,23 @@ aside {
 
 .icon:hover {
   cursor: pointer;
+  fill: var(--primary);
+}
+
+button {
+  background-color: var(--primary);
+  color: var(--background);
+  border: 1px solid var(--copy);
+  border-left: 3px solid var(--copy);
+  box-shadow: none;
+  border-radius: 3px 3px 1rem 3px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  &:hover {
+    color: var(--copy);
+  }
+}
+
+.username {
+  font-weight: 700;
 }
